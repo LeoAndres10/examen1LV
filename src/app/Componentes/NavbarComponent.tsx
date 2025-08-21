@@ -17,10 +17,13 @@ export default function NavBarComponent() {
                                 <Link className="nav-link active" aria-current="page" href="/Autenticacion">login</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" href="/FormularioComponent"><span className='badge text-bg-warning'>{gastado}</span> Carrito</Link>
+                                <Link className="nav-link" href="/FormularioComponent"> Formulario</Link>
                             </li>
                              <li className="nav-item">
-                                <Link className="nav-link" href="/informacion">Informacion Pagina</Link>
+                                <Link className="nav-link" href="/EstadoComponent">Estado</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" href="/ListaGastos">Lista Gastos</Link>
                             </li>
                            
                          

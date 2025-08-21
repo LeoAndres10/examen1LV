@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
  import {  useGasto } from '@/app/Provider/ProviderGasto';
 import ProviderGasto from "@/app/Provider/ProviderGasto";
-import Layout from './(general)/layout'
+import Layout from './(general)/Layout'
 import { Plantilla } from "./Modelos/Plantilla";
 import PageA from "./(general)/Autenticacion/page";
 import NavBarComponent from "./Componentes/NavbarComponent";
@@ -24,7 +24,7 @@ const SistemaLogin = () => {
       <h1 style={{ fontFamily: 'Arial' }}>Sistema de Presupuesto de Gastos Personales</h1>
      <ProviderGasto>
       <SistemaLogin>
-        
+
       </SistemaLogin>
       <Layout >
       </Layout>
