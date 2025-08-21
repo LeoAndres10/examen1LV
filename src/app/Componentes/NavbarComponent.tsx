@@ -1,11 +1,11 @@
 'use client'
 import Link from 'next/link'
 import React from 'react'
-import { useContextProducto } from '../Providers/ProviderProducto'
+import { useGasto } from '@/app/Provider/ProviderGasto'
 
 export default function NavBarComponent() {
 
-    const {carritoProducto}=useContextProducto()
+    const {gastado}=useGasto()
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -14,17 +14,15 @@ export default function NavBarComponent() {
                  
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" href="/productos">Productos</Link>
+                                <Link className="nav-link active" aria-current="page" href="/Autenticacion">login</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" href="/carrito"><span className='badge text-bg-warning'>{carritoProducto.length}</span> Carrito</Link>
+                                <Link className="nav-link" href="/FormularioComponent"><span className='badge text-bg-warning'>{gastado}</span> Carrito</Link>
                             </li>
                              <li className="nav-item">
                                 <Link className="nav-link" href="/informacion">Informacion Pagina</Link>
                             </li>
-                             <li className="nav-item">
-                                <Link className="nav-link" href="/crearproducto">Agregar Producto</Link>
-                            </li>
+                           
                          
                          
                         </ul>
