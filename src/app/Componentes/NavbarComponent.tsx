@@ -19,6 +19,9 @@ export default function NavBarComponent() {
                             <li className="nav-item">
                                 <Link className="nav-link" href="/FormularioComponent"> Formulario</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" href="/AgregarGasto"> Agregar Gasto</Link>
+                            </li>
                              <li className="nav-item">
                                 <Link className="nav-link" href="/EstadoComponent">Estado</Link>
                             </li>
