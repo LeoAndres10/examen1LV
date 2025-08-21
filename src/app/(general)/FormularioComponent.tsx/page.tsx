@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import { useGasto } from '@/app/Provider/ProviderGasto';
 
-export default function page() {
-  const { setPresupuesto, agregarGasto } = useGasto();
+export default function Page() {
+  const { cambiarPresupuestoValor, agregarGasto } = useGasto();
 
   const [presupuestoIngresar, setPresupuestoIngresar] = useState('');
   const [gastoIngresar, setGastoIngresar] = useState('');
@@ -12,7 +12,7 @@ export default function page() {
     e.preventDefault();
     const value = parseFloat(presupuestoIngresar);
     if (!isNaN(value) && value > 0) {
-      setPresupuesto(value);
+      cambiarPresupuestoValor(value);
       setPresupuestoIngresar('');
     }
   };

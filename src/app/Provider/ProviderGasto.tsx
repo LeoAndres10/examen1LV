@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Plantilla } from "../Modelos/Plantilla";
 import { GastoContext } from "../Context/GastoContext";
+import { Gasto } from "../Modelos/Gasto";
 
  export default function ProviderGasto({children}: Plantilla){
   const [autenticado, setAutenticado] = useState(false);
   const [mensaje, setMensaje] = useState('');
 const [presupuesto, setPresupuesto] = useState(0);
   const [gastado, setGastado] = useState(0);
+const [gastos, setGastos] = useState<Gasto[]>([]);
 
-  const setBudget = (value: number) => {
+  async function cambiarPresupuestoValor(value: number) {
     setGastado(value);
     setPresupuesto(0); 
   };
@@ -42,13 +44,49 @@ const [presupuesto, setPresupuesto] = useState(0);
     }
   };
 
+  
+
+  async function cargarGastos() {
+    try {
+      const respuesta = await fetch('http://localhost:5000/gasto');
+      const data = await respuesta.json();
+      setGastos(data);
+    } catch (error) {
+      console.error('Error al cargar gastos', error);
+    }
+  };
+
+  async function agregarGastoPresupuesto(gasto: Gasto) {
+    try {
+      await fetch('http://localhost:5000/gasto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          categoria: gasto.categoria,
+          monto: gasto.monto,
+          fecha: gasto.fecha,
+        }),
+      });
+
+      setGastos((anterior) => [...anterior, gasto]);
+    } catch (error) {
+      console.error('Error al agregar gasto', error);
+    }
+  };
+
+  useEffect(() => {
+    cargarGastos();
+  }, []);
+
+
+
   return (
-    <GastoContext.Provider value={{ presupuesto,ingresar,setPresupuesto,autenticado,gastado, mensaje,agregarGasto }}>
+    <GastoContext.Provider value={{gastos,agregarGastoPresupuesto, presupuesto,ingresar,cambiarPresupuestoValor,autenticado,gastado, mensaje,agregarGasto }}>
       {children}
     </GastoContext.Provider>
   );
-};
 
+ };
 export function useGasto(){
     return useContext(GastoContext)
 }

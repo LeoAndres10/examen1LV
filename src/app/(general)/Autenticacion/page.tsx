@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import { useGasto } from '@/app/Provider/ProviderGasto';
 
@@ -5,7 +6,7 @@ import React from 'react'
 
  
 
-export default function page() 
+export default function Page() 
 {
   const { ingresar, mensaje, autenticado } = useGasto();
 

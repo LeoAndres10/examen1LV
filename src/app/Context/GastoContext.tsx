@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { Gasto } from "../Modelos/Gasto";
 
 
 export const GastoContext= createContext({
@@ -7,6 +8,8 @@ export const GastoContext= createContext({
    ingresar:(nombreUsuario : string, contraseña: string)=>{},
    presupuesto: 0 as number,
   gastado:0 as number,
-  setPresupuesto: (value: number) =>{},
-  agregarGasto: (value: number) =>{}
+  cambiarPresupuestoValor: (value: number) =>{},
+  agregarGasto: (value: number) =>{},
+  gastos:[] as Gasto[],
+  agregarGastoPresupuesto:(gasto:Gasto)=>{}
 })
