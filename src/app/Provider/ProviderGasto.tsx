@@ -4,10 +4,10 @@ import { GastoContext } from "../Context/GastoContext";
 import { Gasto } from "../Modelos/Gasto";
 
  export default function ProviderGasto({children}: Plantilla){
-  const [autenticado, setAutenticado] = useState(false);
-  const [mensaje, setMensaje] = useState('');
-const [presupuesto, setPresupuesto] = useState(0);
-  const [gastado, setGastado] = useState(0);
+  const [autenticado, setAutenticado] = useState<boolean>(false);
+  const [mensaje, setMensaje] = useState<string>('');
+const [presupuesto, setPresupuesto] = useState<number>(0);
+  const [gastado, setGastado] = useState<number>(0);
 const [gastos, setGastos] = useState<Gasto[]>([]);
 
   async function cambiarPresupuestoValor(value: number) {

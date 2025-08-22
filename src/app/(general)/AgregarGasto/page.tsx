@@ -7,16 +7,16 @@ export default function GastosComponent(){
   const { agregarGastoPresupuesto, agregarGasto} = useGasto();
   
 
-  const [monto, setMonto] = useState('');
-  const [categoria, setCategoria] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [monto, setMonto] = useState<number>(0);
+  const [categoria, setCategoria] = useState<string>('');
+  const [descripcion, setDescripcion] = useState<string>('');
+  const [fecha, setFecha] = useState<string>('');
 
    async function validar (e: React.FormEvent){
     e.preventDefault();
 
     const gasto = {
-      monto: parseFloat(monto),
+      monto:(monto),
       categoria,
       descripcion,
       fecha,
@@ -25,7 +25,7 @@ export default function GastosComponent(){
     await agregarGastoPresupuesto(gasto);
     agregarGasto(gasto.monto);
 
-    setMonto('');
+    setMonto(0);
     setCategoria('');
     setDescripcion('');
     setFecha('');
@@ -39,7 +39,7 @@ export default function GastosComponent(){
           type="number"
           placeholder="Monto"
           value={monto}
-          onChange={(e) => setMonto(e.target.value)}
+          onChange={(e) => setMonto(monto)}
           required
         />
         <input

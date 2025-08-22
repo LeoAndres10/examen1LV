@@ -10,8 +10,8 @@ export default function Page()
 {
   const { ingresar, mensaje, autenticado } = useGasto();
 
-  const [nombreUsuario, setNombreUsuario] = useState('');
-  const [contraseña, setContraseña] = useState('');
+  const [nombreUsuario, setNombreUsuario] = useState<string>('');
+  const [contraseña, setContraseña] = useState<string>('');
 
   const validar = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -6,7 +6,7 @@ export default function Page() {
   const { cambiarPresupuestoValor, agregarGasto } = useGasto();
 
   const [presupuestoIngresar, setPresupuestoIngresar] = useState('');
-  const [gastoIngresar, setGastoIngresar] = useState('');
+  const [gastoIngresar, setGastoIngresar] = useState<number>(0);
 
   const cambiarPresupuesto = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,10 +19,10 @@ export default function Page() {
 
   const cambiarAgregarGasto = (e: React.FormEvent) => {
     e.preventDefault();
-    const value = parseFloat(gastoIngresar);
+    const value = gastoIngresar;
     if (!isNaN(value) && value > 0) {
       agregarGasto(value);
-      setGastoIngresar('');
+      setGastoIngresar(0);
     }
   };
 
@@ -44,7 +44,7 @@ export default function Page() {
         <input
           type="number"
           value={gastoIngresar}
-          onChange={(e) => setGastoIngresar(e.target.value)}
+          onChange={(e) => setGastoIngresar(gastoIngresar)}
           placeholder="Agregar gasto"
           required
         />
